@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Stethoscope, AlertTriangle, CheckCircle, Clock, User, Brain, Heart, Activity, FlaskConical, Search } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { SymptomAnalysis } from '../types';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // IMPORTANT: Use environment variables for API keys in a real application.
 // Ensure VITE_GEMINI_API_KEY is set in your .env file
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || 'YOUR_PLACEHOLDER_API_KEY';
+const GEMINI_API_KEY = "AIzaSyB8LoMMNW3gbmYVbnv0iGSAN50H_LRqOMU";
 
 // Initialize the Gemini AI model outside the component
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
-  model: 'gemini-1.5-flash',
+  model: 'gemini-2.5-flash',
   systemInstruction: `You are Dr. HealthAI, a highly cautious and responsible AI health information assistant. Your primary role is to provide general health-related information and potential insights based on user-provided symptoms, NOT to diagnose, treat, or prescribe.
 
 Crucially, you MUST adhere to these safety guidelines:
